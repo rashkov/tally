@@ -31,7 +31,7 @@ function App() {
               <tbody>
               {countries.map((country)=>{
                   return (
-                  <tr>
+                  <tr key={country.code}>
                     <td><Flag country={country.code} /></td>
                     <td>{country.gold}</td>
                     <td>{country.silver}</td>

@@ -30,7 +30,7 @@ function Flag(props){
         height: `${FLAG_HEIGHT}px`,
         background: `url(${flag_url}) 0px -${flag_index*FLAG_HEIGHT}px`
     };
-    return <img style={flag_style} />;
+    return <div style={flag_style} />;
 }
 
 export default Flag;
