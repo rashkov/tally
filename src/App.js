@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Flag from './flag';
+import Flag from './components/Flag';
+import SortableMedalHeader from './components/SortableMedalHeader';
+import sortBy from 'lodash/sortBy';
+
+function sortCountries(sort_medal, sort_direction, countries, setCountries){
+  let sorted_countries = sortBy(countries, [sort_medal, 'gold', 'silver'])
+  if (sort_direction === 'desc'){
+    sorted_countries = sorted_countries.reverse()
+  }
+  setCountries(sorted_countries)
+}
 
 function App() {
     const [countries, setCountries] = useState([]);
@@ -18,15 +28,24 @@ function App() {
         });
       return;
     }, []);
+
+
+    const [sort_medal, setSortMedal] = useState('gold');
+    const [sort_direction, setSortDirection] = useState('desc');
+
+    function handleSort(medalType){
+      sortCountries(medalType, 'desc', countries, setCountries)
+    }
+
     return (
         <div className="App">
             <table>
               <thead>
                 <tr>
                   <th>Country</th>
-                  <th>Gold</th>
-                  <th>Silver</th>
-                  <th>Bronze</th>
+                  <SortableMedalHeader medalType="gold" handleSort={handleSort} />
+                  <SortableMedalHeader medalType="silver" handleSort={handleSort} />
+                  <SortableMedalHeader medalType="bronze" handleSort={handleSort} />
                 </tr>
               </thead>
               <tbody>
