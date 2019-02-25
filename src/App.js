@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "./styles/Reboot.css";
 import Flag from "./components/Flag";
 import SortableMedalHeader from "./components/SortableMedalHeader";
 import sortBy from "lodash/sortBy";
@@ -65,28 +66,50 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <table>
+    <div className="app">
+      <div style={{ fontSize: "18px" }}>MEDAL COUNT</div>
+      <table className="medals-table">
         <thead>
           <tr>
-            <th>Country</th>
-            <SortableMedalHeader medalType="gold" handleSort={handleSort} />
-            <SortableMedalHeader medalType="silver" handleSort={handleSort} />
-            <SortableMedalHeader medalType="bronze" handleSort={handleSort} />
+            <th />
+            <SortableMedalHeader
+              medalType="gold"
+              handleSort={handleSort}
+              sortMedal={sort_medal}
+              sortDesc={sort_desc}
+            />
+            <SortableMedalHeader
+              medalType="silver"
+              handleSort={handleSort}
+              sortMedal={sort_medal}
+              sortDesc={sort_desc}
+            />
+            <SortableMedalHeader
+              medalType="bronze"
+              handleSort={handleSort}
+              sortMedal={sort_medal}
+              sortDesc={sort_desc}
+            />
             <SortableMedalHeader medalType="total" handleSort={handleSort} />
           </tr>
         </thead>
         <tbody>
-          {countries.slice(0, 10).map(country => {
+          {countries.slice(0, 10).map((country, index) => {
             return (
               <tr key={country.code}>
-                <td>
-                  <Flag country={country.code} />
+                <td className="flag-column">
+                  <span>{index}</span>
+                  <span>
+                    <Flag country={country.code} />
+                  </span>
+                  <span className="country-code">{country.code}</span>
                 </td>
                 <td>{country.gold}</td>
                 <td>{country.silver}</td>
                 <td>{country.bronze}</td>
-                <td>{country.total}</td>
+                <td style={{ fontWeight: 600, color: "#565656" }}>
+                  {country.total}
+                </td>
               </tr>
             );
           })}

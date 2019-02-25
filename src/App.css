@@ -1,33 +1,38 @@
-.App {
+.app {
+  font-family: "Arial";
+  color: gray;
+  padding: 20px;
+}
+.medals-table {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.medals-table tbody tr:first-child {
+  border-top: 2px solid #999797;
+}
+.medals-table tr {
+  border-bottom: 1px solid #D3D3D3;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.medals-table tr th{
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.medals-table tr th,
+.medals-table tr td
+{
+  padding: 7px;
+}
+.medals-table tbody {
+  border-top: 1px solid gray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.medals-table .flag-column{
+  text-align: left;
+  padding-right: 60px;
+}
+.medals-table .flag-column span{
+  padding-right: 12px;
+}
+.medals-table .country-code{
+  font-weight: bold;
 }

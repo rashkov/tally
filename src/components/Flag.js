@@ -26,10 +26,11 @@ function Flag(props) {
   let FLAG_WIDTH = 28,
     FLAG_HEIGHT = 17;
   let flag_style = {
-    display: "block",
+    display: "inline-block",
     width: `${FLAG_WIDTH}px`,
     height: `${FLAG_HEIGHT}px`,
-    background: `url(${flag_url}) 0px -${flag_index * FLAG_HEIGHT}px`
+    background: `url(${flag_url}) 0px -${flag_index * FLAG_HEIGHT}px`,
+    verticalAlign: "middle"
   };
   return <div style={flag_style} />;
 }
