@@ -29,12 +29,25 @@ function App() {
       return;
     }, []);
 
-
     const [sort_medal, setSortMedal] = useState('gold');
-    const [sort_direction, setSortDirection] = useState('desc');
+    const [sort_desc, setSortDesc] = useState(true);
+    useEffect(()=>{
+      let sort_direction;
+      if(sort_desc){
+        sort_direction = 'desc'
+      }else{
+        sort_direction = 'asc'
+      }
+      sortCountries(sort_medal, sort_direction, countries, setCountries)
+    }, [sort_desc, sort_medal]);
 
     function handleSort(medalType){
-      sortCountries(medalType, 'desc', countries, setCountries)
+      if (sort_medal === medalType){
+        setSortDesc(!sort_desc)
+      }else{
+        setSortDesc(true)
+        setSortMedal(medalType)
+      }
     }
 
     return (
