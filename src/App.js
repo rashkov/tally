@@ -69,7 +69,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {countries.map(country => {
+          {countries.slice(0, 10).map(country => {
             return (
               <tr key={country.code}>
                 <td>
