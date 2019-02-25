@@ -14,6 +14,7 @@ function sortCountries(sort_medal, sort_direction, countries, setCountries) {
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [networkError, setNetworkError] = useState(null);
   useEffect(() => {
     const COUNTRIES_URL =
       "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json";
@@ -28,9 +29,8 @@ function App() {
         setCountries(countries_data);
       })
       .catch(function(error) {
-        console.log(
-          "There has been a problem with your fetch operation: ",
-          error.message
+        setNetworkError(
+          "There has been a problem with your fetch operation: " + error.message
         );
       });
     return;
@@ -55,6 +55,10 @@ function App() {
       setSortDesc(true);
       setSortMedal(medalType);
     }
+  }
+
+  if (networkError) {
+    return <div>{networkError}</div>;
   }
 
   return (
