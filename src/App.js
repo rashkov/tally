@@ -17,7 +17,7 @@ function App() {
             console.log('There has been a problem with your fetch operation: ', error.message);
         });
       return;
-    }, [ countries.length ]);
+    }, []);
     return (
         <div className="App">
             <table>
