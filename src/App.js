@@ -26,6 +26,9 @@ function App() {
         throw new Error("Network response was not ok.");
       })
       .then(function(countries_data) {
+        countries_data.forEach(country => {
+          country.total = country.gold + country.silver + country.bronze;
+        });
         setCountries(countries_data);
       })
       .catch(function(error) {
@@ -70,6 +73,7 @@ function App() {
             <SortableMedalHeader medalType="gold" handleSort={handleSort} />
             <SortableMedalHeader medalType="silver" handleSort={handleSort} />
             <SortableMedalHeader medalType="bronze" handleSort={handleSort} />
+            <SortableMedalHeader medalType="total" handleSort={handleSort} />
           </tr>
         </thead>
         <tbody>
@@ -82,6 +86,7 @@ function App() {
                 <td>{country.gold}</td>
                 <td>{country.silver}</td>
                 <td>{country.bronze}</td>
+                <td>{country.total}</td>
               </tr>
             );
           })}
