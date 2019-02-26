@@ -50,7 +50,7 @@ function App() {
       sort_direction = "asc";
     }
     sortCountries(sort_medal, sort_direction, countries, setCountries);
-  }, [sort_desc, sort_medal]);
+  }, [sort_desc, sort_medal, countries.length]);
 
   function handleSort(medalType) {
     if (sort_medal === medalType) {
