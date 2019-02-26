@@ -1,5 +1,5 @@
-## Tally
-Tally displays a table of olympic medal counts sorted by country. This project explores the use of [React hooks](https://reactjs.org/docs/hooks-intro.html) to build a simple React app.
+## Top Count
+Top Count displays a table of olympic medal counts sorted by country. This project explores the use of [React hooks](https://reactjs.org/docs/hooks-intro.html) to build a simple React app.
 ### Running
 ```
   npm install
