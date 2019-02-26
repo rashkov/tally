@@ -90,7 +90,12 @@ function App() {
               sortMedal={sort_medal}
               sortDesc={sort_desc}
             />
-            <SortableMedalHeader medalType="total" handleSort={handleSort} />
+            <SortableMedalHeader
+              medalType="total"
+              handleSort={handleSort}
+              sortMedal={sort_medal}
+              sortDesc={sort_desc}
+            />
           </tr>
         </thead>
         <tbody>
