@@ -1,4 +1,9 @@
-## Learn More
+## Tally
+### Running
+```
+  npm install
+  npm start
+```
 ### Fun Bugs Encountered
 #### Fetching data turned into an infinite loop
 ```
