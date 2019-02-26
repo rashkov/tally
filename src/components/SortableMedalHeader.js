@@ -50,11 +50,11 @@ function SortableMedalHeader(props) {
   if (props.sortMedal === props.medalType) {
     if (props.sortDesc) {
       sort_style = {
-        borderBottom: "2px solid #999797"
+        borderTop: "2px solid #999797"
       };
     } else {
       sort_style = {
-        borderTop: "2px solid #999797"
+        borderBottom: "2px solid #999797"
       };
     }
   }
