@@ -98,7 +98,7 @@ function App() {
             return (
               <tr key={country.code}>
                 <td className="flag-column">
-                  <span>{index}</span>
+                  <span>{index + 1}</span>
                   <span>
                     <Flag country={country.code} />
                   </span>
