@@ -98,7 +98,15 @@ function App() {
             return (
               <tr key={country.code}>
                 <td className="flag-column">
-                  <span>{index + 1}</span>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "30px",
+                      textAlign: "right"
+                    }}
+                  >
+                    {index + 1}
+                  </span>
                   <span>
                     <Flag country={country.code} />
                   </span>
