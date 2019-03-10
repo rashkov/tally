@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./styles/App.css";
 import "./styles/Reboot.css";
 import Flag from "./components/Flag";
 import SortableMedalHeader from "./components/SortableMedalHeader";
@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="app">
-      <div style={{ fontSize: "18px" }}>MEDAL COUNT</div>
+      <div className="font-size-18px">MEDAL COUNT</div>
       <table className="medals-table">
         <thead>
           <tr>
@@ -103,13 +103,7 @@ function App() {
             return (
               <tr key={country.code}>
                 <td className="flag-column">
-                  <span
-                    style={{
-                      display: "inline-block",
-                      width: "30px",
-                      textAlign: "right"
-                    }}
-                  >
+                  <span className="inline-block width-30px text-align-right">
                     {index + 1}
                   </span>
                   <span>
@@ -120,7 +114,7 @@ function App() {
                 <td>{country.gold}</td>
                 <td>{country.silver}</td>
                 <td>{country.bronze}</td>
-                <td style={{ fontWeight: 600, color: "#565656" }}>
+                <td className="font-weight-600 color-565656">
                   {country.total}
                 </td>
               </tr>

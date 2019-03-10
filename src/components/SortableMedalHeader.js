@@ -4,64 +4,36 @@ function SortableMedalHeader(props) {
   let icon;
   if (props.medalType === "gold") {
     icon = (
-      <div
-        style={{
-          display: "block",
-          width: "20px",
-          height: "20px",
-          borderRadius: "20px",
-          backgroundColor: "#fee101"
-        }}
-      />
+      <div className="block width-20px height-20px border-radius-20px background-color-fee101" />
     );
   } else if (props.medalType === "silver") {
     icon = (
-      <div
-        style={{
-          display: "block",
-          width: "20px",
-          height: "20px",
-          borderRadius: "20px",
-          backgroundColor: "#a7a7ad"
-        }}
-      />
+      <div className="block width-20px height-20px border-radius-20px background-color-a7a7ad" />
     );
   } else if (props.medalType === "bronze") {
     icon = (
-      <div
-        style={{
-          display: "block",
-          width: "20px",
-          height: "20px",
-          borderRadius: "20px",
-          backgroundColor: "#824a02"
-        }}
-      />
+      <div className="block width-20px height-20px border-radius-20px background-color-824a02" />
     );
   } else {
     icon = (
-      <div style={{ color: "#565656", fontWeight: "normal", fontSize: "12px" }}>
+      <div className="color-565656 font-weight-normal font-size-12px">
         TOTAL
       </div>
     );
   }
 
-  let sortStyle = {};
+  let sortStyle;
   if (props.sortMedal === props.medalType) {
     if (props.sortDesc) {
-      sortStyle = {
-        borderTop: "2px solid #999797"
-      };
+      sortStyle = "sort-desc";
     } else {
-      sortStyle = {
-        borderBottom: "2px solid #999797"
-      };
+      sortStyle = "sort-asc";
     }
   }
 
   return (
     <th
-      style={sortStyle}
+      className={sortStyle}
       onClick={evt => {
         props.handleSort(props.medalType);
       }}

@@ -24,15 +24,16 @@ function Flag(props) {
   // Sprite sheet is 28x221;
   // 221px height / 13 flags = 17px of height per flag
   let FLAGWIDTH = 28,
-    FLAGHEIGHT = 17;
-  let flagStyle = {
-    display: "inline-block",
-    width: `${FLAGWIDTH}px`,
-    height: `${FLAGHEIGHT}px`,
-    background: `url(${FLAGURL}) 0px -${flagIndex * FLAGHEIGHT}px`,
-    verticalAlign: "middle"
-  };
-  return <div style={flagStyle} />;
+    FLAGHEIGHT = 17,
+    flagStyle = {
+      width: `${FLAGWIDTH}px`,
+      height: `${FLAGHEIGHT}px`,
+      background: `url(${FLAGURL}) 0px -${flagIndex * FLAGHEIGHT}px`
+    };
+
+  return (
+    <div className="inline-block vertical-align-middle" style={flagStyle} />
+  );
 }
 
 export default Flag;
