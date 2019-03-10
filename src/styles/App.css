@@ -99,7 +99,9 @@
 }
 .sort-desc{
   border-top: 2px solid #999797;
+  border-bottom: 2px solid #999797;
 }
 .sort-asc{
   border-bottom: 2px solid #999797;
+  border-top: 2px solid transparent;
 }
