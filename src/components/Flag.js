@@ -18,8 +18,7 @@ const flagOrder = [
 
 function Flag(props) {
   let flagIndex = flagOrder.indexOf(props.country);
-  let FLAGURL =
-    "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/flags.png";
+  let FLAGURL = "/flags.png";
 
   // Sprite sheet is 28x221;
   // 221px height / 13 flags = 17px of height per flag

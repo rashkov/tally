@@ -17,8 +17,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [networkError, setNetworkError] = useState(null);
   useEffect(() => {
-    const DATAURL =
-      "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json";
+    const DATAURL = "/medals.json";
     fetch(DATAURL)
       .then(function(response) {
         if (response.ok) {

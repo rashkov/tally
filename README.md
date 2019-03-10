@@ -10,7 +10,7 @@ Top Count displays a table of olympic medal counts sorted by country. This proje
 ```
   const [countries, setCountries] = useState([]);
   useEffect(()=>{
-      const COUNTRIES_URL = "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json";
+      const COUNTRIES_URL = "/medals.json";
       fetch(COUNTRIES_URL).then(function(response) {
           if(response.ok) {
               return response.json();
@@ -39,7 +39,7 @@ Doing something similar fixed it up to only fetch once:
 
 ```
     useEffect(()=>{
-        const COUNTRIES_URL = "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json";
+        const COUNTRIES_URL = "medals.json";
         fetch(COUNTRIES_URL).then(function(response) {
         ...
         ...
