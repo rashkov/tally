@@ -5,32 +5,32 @@ import Flag from "./components/Flag";
 import SortableMedalHeader from "./components/SortableMedalHeader";
 import sortBy from "lodash/sortBy";
 
-function sortCountries(sort_medal, sort_direction, countries, setCountries) {
-  let sorted_countries = sortBy(countries, [sort_medal, "gold", "silver"]);
-  if (sort_direction === "desc") {
-    sorted_countries = sorted_countries.reverse();
+function sortCountries(sortMedal, sortDirection, countries, setCountries) {
+  let sortedCountries = sortBy(countries, [sortMedal, "gold", "silver"]);
+  if (sortDirection === "desc") {
+    sortedCountries = sortedCountries.reverse();
   }
-  setCountries(sorted_countries);
+  setCountries(sortedCountries);
 }
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [networkError, setNetworkError] = useState(null);
   useEffect(() => {
-    const COUNTRIES_URL =
+    const DATAURL =
       "https://s3-us-west-2.amazonaws.com/reuters.medals-widget/medals.json";
-    fetch(COUNTRIES_URL)
+    fetch(DATAURL)
       .then(function(response) {
         if (response.ok) {
           return response.json();
         }
         throw new Error("Network response was not ok.");
       })
-      .then(function(countries_data) {
-        countries_data.forEach(country => {
+      .then(function(countriesData) {
+        countriesData.forEach(country => {
           country.total = country.gold + country.silver + country.bronze;
         });
-        setCountries(countries_data);
+        setCountries(countriesData);
       })
       .catch(function(error) {
         setNetworkError(
@@ -40,21 +40,21 @@ function App() {
     return;
   }, []);
 
-  const [sort_medal, setSortMedal] = useState("gold");
-  const [sort_desc, setSortDesc] = useState(true);
+  const [sortMedal, setSortMedal] = useState("gold");
+  const [sortDesc, setSortDesc] = useState(true);
   useEffect(() => {
-    let sort_direction;
-    if (sort_desc) {
-      sort_direction = "desc";
+    let sortDirection;
+    if (sortDesc) {
+      sortDirection = "desc";
     } else {
-      sort_direction = "asc";
+      sortDirection = "asc";
     }
-    sortCountries(sort_medal, sort_direction, countries, setCountries);
-  }, [sort_desc, sort_medal, countries.length]);
+    sortCountries(sortMedal, sortDirection, countries, setCountries);
+  }, [sortDesc, sortMedal, countries.length]);
 
   function handleSort(medalType) {
-    if (sort_medal === medalType) {
-      setSortDesc(!sort_desc);
+    if (sortMedal === medalType) {
+      setSortDesc(!sortDesc);
     } else {
       setSortDesc(true);
       setSortMedal(medalType);
@@ -75,26 +75,26 @@ function App() {
             <SortableMedalHeader
               medalType="gold"
               handleSort={handleSort}
-              sortMedal={sort_medal}
-              sortDesc={sort_desc}
+              sortMedal={sortMedal}
+              sortDesc={sortDesc}
             />
             <SortableMedalHeader
               medalType="silver"
               handleSort={handleSort}
-              sortMedal={sort_medal}
-              sortDesc={sort_desc}
+              sortMedal={sortMedal}
+              sortDesc={sortDesc}
             />
             <SortableMedalHeader
               medalType="bronze"
               handleSort={handleSort}
-              sortMedal={sort_medal}
-              sortDesc={sort_desc}
+              sortMedal={sortMedal}
+              sortDesc={sortDesc}
             />
             <SortableMedalHeader
               medalType="total"
               handleSort={handleSort}
-              sortMedal={sort_medal}
-              sortDesc={sort_desc}
+              sortMedal={sortMedal}
+              sortDesc={sortDesc}
             />
           </tr>
         </thead>
