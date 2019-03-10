@@ -1,5 +1,5 @@
 {
-  "name": "tally",
+  "name": "topcount",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -108,8 +108,8 @@
       "node"
     ],
     "watchPlugins": [
-      "/home/mike/code/tally/node_modules/jest-watch-typeahead/filename.js",
-      "/home/mike/code/tally/node_modules/jest-watch-typeahead/testname.js"
+      "/home/mike/code/topcount/node_modules/jest-watch-typeahead/filename.js",
+      "/home/mike/code/topcount/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "babel": {
