@@ -4,6 +4,7 @@ import "./styles/Reboot.css";
 import Flag from "./components/Flag";
 import SortableMedalHeader from "./components/SortableMedalHeader";
 import sortBy from "lodash/sortBy";
+import useFetchedMedals from "./hooks/useFetchedMedals";
 
 function sortCountries(sortMedal, sortDirection, countries, setCountries) {
   let sortedCountries = sortBy(countries, [sortMedal, "gold", "silver"]);
@@ -14,30 +15,11 @@ function sortCountries(sortMedal, sortDirection, countries, setCountries) {
 }
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const [networkError, setNetworkError] = useState(null);
-  useEffect(() => {
-    const DATAURL = "/medals.json";
-    fetch(DATAURL)
-      .then(function(response) {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Network response was not ok.");
-      })
-      .then(function(countriesData) {
-        countriesData.forEach(country => {
-          country.total = country.gold + country.silver + country.bronze;
-        });
-        setCountries(countriesData);
-      })
-      .catch(function(error) {
-        setNetworkError(
-          "There has been a problem with your fetch operation: " + error.message
-        );
-      });
-    return;
-  }, []);
+  let [
+    countries,
+    setCountries,
+    networkError
+  ] = useFetchedMedals();
 
   const [sortMedal, setSortMedal] = useState("gold");
   const [sortDesc, setSortDesc] = useState(true);
