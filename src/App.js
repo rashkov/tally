@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/App.css";
 import "./styles/Reboot.css";
 import Flag from "./components/Flag";
-import SortableMedalHeader from "./components/SortableMedalHeader";
+import MedalsTableHead from "./components/MedalsTableHead";
 import useFetchedMedals from "./hooks/useFetchedMedals";
 import useSortableByCountry from "./hooks/useSortableByCountry";
 
@@ -18,39 +18,12 @@ function App() {
     return <div>{networkError}</div>;
   }
 
+  let medalsTableHead = MedalsTableHead(handleSort, sortMedal, sortDesc);
   return (
     <div className="app">
       <div className="font-size-18px">MEDAL COUNT</div>
       <table className="medals-table">
-        <thead>
-          <tr>
-            <th />
-            <SortableMedalHeader
-              medalType="gold"
-              handleSort={handleSort}
-              sortMedal={sortMedal}
-              sortDesc={sortDesc}
-            />
-            <SortableMedalHeader
-              medalType="silver"
-              handleSort={handleSort}
-              sortMedal={sortMedal}
-              sortDesc={sortDesc}
-            />
-            <SortableMedalHeader
-              medalType="bronze"
-              handleSort={handleSort}
-              sortMedal={sortMedal}
-              sortDesc={sortDesc}
-            />
-            <SortableMedalHeader
-              medalType="total"
-              handleSort={handleSort}
-              sortMedal={sortMedal}
-              sortDesc={sortDesc}
-            />
-          </tr>
-        </thead>
+        {medalsTableHead}
         <tbody>
           {countries.slice(0, 10).map((country, index) => {
             return (
