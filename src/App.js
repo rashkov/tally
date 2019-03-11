@@ -1,46 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles/App.css";
 import "./styles/Reboot.css";
 import Flag from "./components/Flag";
 import SortableMedalHeader from "./components/SortableMedalHeader";
-import sortBy from "lodash/sortBy";
 import useFetchedMedals from "./hooks/useFetchedMedals";
-
-function sortCountries(sortMedal, sortDirection, countries, setCountries) {
-  let sortedCountries = sortBy(countries, [sortMedal, "gold", "silver"]);
-  if (sortDirection === "desc") {
-    sortedCountries = sortedCountries.reverse();
-  }
-  setCountries(sortedCountries);
-}
+import useSortableByCountry from "./hooks/useSortableByCountry";
 
 function App() {
-  let [
+  let [countries, setCountries, networkError] = useFetchedMedals();
+
+  let [sortMedal, sortDesc, handleSort] = useSortableByCountry(
     countries,
-    setCountries,
-    networkError
-  ] = useFetchedMedals();
-
-  const [sortMedal, setSortMedal] = useState("gold");
-  const [sortDesc, setSortDesc] = useState(true);
-  useEffect(() => {
-    let sortDirection;
-    if (sortDesc) {
-      sortDirection = "desc";
-    } else {
-      sortDirection = "asc";
-    }
-    sortCountries(sortMedal, sortDirection, countries, setCountries);
-  }, [sortDesc, sortMedal, countries.length]);
-
-  function handleSort(medalType) {
-    if (sortMedal === medalType) {
-      setSortDesc(!sortDesc);
-    } else {
-      setSortDesc(true);
-      setSortMedal(medalType);
-    }
-  }
+    setCountries
+  );
 
   if (networkError) {
     return <div>{networkError}</div>;
